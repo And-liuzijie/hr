@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.briup.mapper.SalaryMapper" >
+  <resultMap id="BaseResultMap" type="com.briup.bean.Salary" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="EMPID" property="empid" jdbcType="VARCHAR" />
+    <result column="YEAR" property="year" jdbcType="VARCHAR" />
+    <result column="MON" property="mon" jdbcType="VARCHAR" />
+    <result column="BASICSALARY" property="basicsalary" jdbcType="DECIMAL" />
+    <result column="ETRASALARY" property="etrasalary" jdbcType="DECIMAL" />
+    <result column="HOLIDAYSALARY" property="holidaysalary" jdbcType="DECIMAL" />
+    <result column="OUTSALARY" property="outsalary" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, EMPID, YEAR, MON, BASICSALARY, ETRASALARY, HOLIDAYSALARY, OUTSALARY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.briup.bean.SalaryExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SALARY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.briup.bean.SalaryExample" >
+    delete from SALARY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.briup.bean.Salary" >
+    <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE" >
+      select att_seq.nextVal from dual
+    </selectKey>
+    insert into SALARY (ID, EMPID, YEAR, 
+      MON, BASICSALARY, ETRASALARY, 
+      HOLIDAYSALARY, OUTSALARY)
+    values (#{id,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{year,jdbcType=VARCHAR}, 
+      #{mon,jdbcType=VARCHAR}, #{basicsalary,jdbcType=DECIMAL}, #{etrasalary,jdbcType=DECIMAL}, 
+      #{holidaysalary,jdbcType=DECIMAL}, #{outsalary,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.briup.bean.Salary" >
+    <selectKey resultType="java.lang.String" keyProperty="id" order="BEFORE" >
+      select att_seq.nextVal from dual
+    </selectKey>
+    insert into SALARY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ID,
+      <if test="empid != null" >
+        EMPID,
+      </if>
+      <if test="year != null" >
+        YEAR,
+      </if>
+      <if test="mon != null" >
+        MON,
+      </if>
+      <if test="basicsalary != null" >
+        BASICSALARY,
+      </if>
+      <if test="etrasalary != null" >
+        ETRASALARY,
+      </if>
+      <if test="holidaysalary != null" >
+        HOLIDAYSALARY,
+      </if>
+      <if test="outsalary != null" >
+        OUTSALARY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=VARCHAR},
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="year != null" >
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="mon != null" >
+        #{mon,jdbcType=VARCHAR},
+      </if>
+      <if test="basicsalary != null" >
+        #{basicsalary,jdbcType=DECIMAL},
+      </if>
+      <if test="etrasalary != null" >
+        #{etrasalary,jdbcType=DECIMAL},
+      </if>
+      <if test="holidaysalary != null" >
+        #{holidaysalary,jdbcType=DECIMAL},
+      </if>
+      <if test="outsalary != null" >
+        #{outsalary,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.briup.bean.SalaryExample" resultType="java.lang.Integer" >
+    select count(*) from SALARY
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SALARY
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.empid != null" >
+        EMPID = #{record.empid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.year != null" >
+        YEAR = #{record.year,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mon != null" >
+        MON = #{record.mon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.basicsalary != null" >
+        BASICSALARY = #{record.basicsalary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.etrasalary != null" >
+        ETRASALARY = #{record.etrasalary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.holidaysalary != null" >
+        HOLIDAYSALARY = #{record.holidaysalary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outsalary != null" >
+        OUTSALARY = #{record.outsalary,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SALARY
+    set ID = #{record.id,jdbcType=VARCHAR},
+      EMPID = #{record.empid,jdbcType=VARCHAR},
+      YEAR = #{record.year,jdbcType=VARCHAR},
+      MON = #{record.mon,jdbcType=VARCHAR},
+      BASICSALARY = #{record.basicsalary,jdbcType=DECIMAL},
+      ETRASALARY = #{record.etrasalary,jdbcType=DECIMAL},
+      HOLIDAYSALARY = #{record.holidaysalary,jdbcType=DECIMAL},
+      OUTSALARY = #{record.outsalary,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

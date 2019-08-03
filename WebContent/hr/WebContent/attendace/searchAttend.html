@@ -1,0 +1,107 @@
+<div style="padding-top: 20px;">
+	<form action="" class="form-inline">
+		<label class="control-label">请选择部门：</label>
+		<select name="departId" class="form-control" onchange="this.form.submit();">
+					<option>市场部</option>
+					<option>市场部</option>
+					<option>市场部</option>
+				</select>　　
+		<label class="control-label">请选择状态：</label>
+		<select name="attendType" class="form-control" onchange="this.form.submit();">
+					<option>缺勤</option>
+					<option>在职</option>
+					<option>请假</option>
+		</select> 　　
+		<label class="control-label">开始时间：</label>
+		<span class="form-group has-feedback input-append date"  data-date-format='yyyy-mm-dd'>
+			<input class="form-control" name="beginTime" id="datetimepicker1" size="16" type="text">
+			<span class="add-on form-control-feedback"><i class="icon-th glyphicon glyphicon-calendar"></i></span>
+		</span>　　
+		<label class="control-label">结束时间：</label>
+		<span class="form-group has-feedback input-append date"  data-date-format='yyyy-mm-dd'>
+			<input class="form-control" name="endTime" id="datetimepicker2"  size="16" type="text">
+			<span class="add-on form-control-feedback"><i class="icon-th glyphicon glyphicon-calendar"></i></span>
+		</span>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+	<table class="table table-condensed table-hover table-bordered  table-striped" style="margin-top: 20px;">
+				<thead>
+					<tr>
+						<th>职工编号</th>
+						<th>职工姓名</th>
+						<th>所属部门</th>
+						<th>日期</th>
+						<th>状态</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<tr>
+						<td>1001</td>
+						<td>张三</td>
+						<td>技术部</td>
+						<td>2017-12-14</td>
+						<td>在职</td>
+					</tr>
+					<tr>
+						<td>1001</td>
+						<td>张三</td>
+						<td>技术部</td>
+						<td>2017-12-14</td>
+						<td>在职</td>
+					</tr>
+					<tr>
+						<td>1001</td>
+						<td>张三</td>
+						<td>技术部</td>
+						<td>2017-12-14</td>
+						<td>在职</td>
+					</tr>
+					<tr>
+						<td>1001</td>
+						<td>张三</td>
+						<td>技术部</td>
+						<td>2017-12-14</td>
+						<td>在职</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr >
+						<td colspan="5"> 
+							<ul class="pagination">
+							    <li>
+							      <a href="#" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+							    </li>
+							    <li><a href="#">1</a></li>
+							    <li><a href="#">2</a></li>
+							    <li><a href="#">3</a></li>
+							    <li><a href="#">4</a></li>
+							    <li><a href="#">5</a></li>
+							    <li>
+							      <a href="#" aria-label="Next">
+							        <span aria-hidden="true">&raquo;</span>
+							      </a>
+							    </li>
+							  </ul>
+      					</td>
+					</tr>
+				</tfoot>
+			</table>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('#datetimepicker1').datetimepicker({
+			format: 'yyyy-mm-dd',  
+			autoclose: true,
+			minView:2
+		});
+		$('#datetimepicker2').datetimepicker({
+			format: 'yyyy-mm-dd',  
+			autoclose: true,
+			minView:2
+		});
+		var d = new Date();
+		$("span>input[type='text']").val(d.toDefineString());
+	})
+</script>

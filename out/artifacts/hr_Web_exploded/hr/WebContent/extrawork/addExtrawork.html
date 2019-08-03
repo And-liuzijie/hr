@@ -1,0 +1,49 @@
+<div>
+	<form action="" class="form-horizontal" style="margin-top: 20px;">
+		<div class="form-group has-feedback">
+			<label class="control-label col-md-2 col-xs-2 col-sm-2">职工编号：</label>
+			<div class="col-md-4 col-xs-4 col-sm-4">
+				<input type="text" name="empId" class="form-control">
+			</div>
+		</div>
+		<div class="form-group has-feedback">
+			<label class="control-label col-md-2 col-xs-2 col-sm-2">加班开始时间：</label> 
+			<div class="col-md-4 col-xs-4 col-sm-4 input-append date" id="datetimepicker1" data-date-format="yyyy-mm-dd">
+			     <input class="form-control" size="16" type="text">
+			     <span class="add-on form-control-feedback"><i class="icon-th glyphicon glyphicon-calendar"></i></span>
+			</div>                            
+		</div>　　
+		<div class="form-group has-feedback">
+			<label class="control-label col-md-2 col-xs-2 col-sm-2">加班结束时间：</label> 
+			<div class="col-md-4 col-xs-4 col-sm-4 input-append date" id="datetimepicker2" data-date-format="yyyy-mm-dd">
+			     <input class="form-control" size="16" type="text">
+			     <span class="add-on form-control-feedback"><i class="icon-th glyphicon glyphicon-calendar"></i></span>
+			</div>                            
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-xs-2 col-sm-2">具体原因：</label>
+			<div class="col-md-4 col-xs-4 col-sm-4">
+				<textarea class="form-control"  rows="5" cols="68" name="reason"></textarea>
+			</div>
+		</div>
+		<div class="form-group col-md-7 col-xs-7 col-sm-7"  style="text-align: center;">
+			<input type="submit" class="btn btn-success" value="提 交"/>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('#datetimepicker1').datetimepicker({
+			format: 'yyyy-mm-dd',  
+			autoclose: true,
+			minView:2
+		});
+		$('#datetimepicker2').datetimepicker({
+			format: 'yyyy-mm-dd',  
+			autoclose: true,
+			minView:2
+		});
+		var d = new Date();
+		$("span>input[type='text']").val(d.toDefineString());
+	})
+</script>

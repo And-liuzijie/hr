@@ -1,0 +1,35 @@
+<div id="addDepart">
+			<form class="form-horizontal" action="addDepart.do" method="post">
+				<fieldset>
+					<legend>添加部门</legend>
+					<div class="form-group has-feedback">
+							<label class="control-label col-md-2 col-xs-2 col-sm-2">部门编号:</label>
+							<div class="col-md-4 col-xs-4 col-sm-4">
+								<input type="text" name="departId" class="form-control">
+								<span class="glyphicon glyphicon-user form-control-feedback"></span>
+							</div>
+							 
+					</div>
+					<div class="form-group has-feedback">
+							<label class="control-label col-md-2 col-xs-2 col-sm-2">部门名称:</label>
+							<div class="col-md-4 col-xs-4 col-sm-4">
+								<input type="text" name="departname" class="form-control">
+								<span class="glyphicon glyphicon-user form-control-feedback"></span>
+							</div>
+							 
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-2 col-xs-2 col-sm-2">部门描述：</label>
+						<div class="col-md-4 col-xs-4 col-sm-4">
+							<textarea rows="5" cols="68" name="info"></textarea>
+						</div>
+					</div>
+					</fieldset>
+					<div class="form-group col-md-7 col-xs-7 col-sm-7"  style="text-align: center;"><input type="submit" class="btn btn-success" value="提 交"/></div>
+				</form>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$('#datetimepicker').datetimepicker();
+	})
+</script>

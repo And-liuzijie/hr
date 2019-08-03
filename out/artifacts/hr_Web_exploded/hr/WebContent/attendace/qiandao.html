@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="css/sign.css"/>  
+<div style="margin-top: 20px;">
+	 <div style="width:300px;height:300px;" id="calendar"></div>  
+</div>
+<script type="text/javascript" src="js/qiandao.js"></script>
+<script type="text/javascript">
+  $(function(){  
+    //ajax获取日历json数据  
+    var signList=[{"signDay":"10","status":"1"},{"signDay":"11","status":"1"},
+                  {"signDay":"12","status":"1"},{"signDay":"13","status":"2"}];  
+     calUtil.init(signList);  
+  });  
+</script>
